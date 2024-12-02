@@ -1,0 +1,5 @@
+<odoo>
+    <record id="group_course_user" model="res.groups">
+        <field name="name">Course User</field>
+    </record>
+</odoo>

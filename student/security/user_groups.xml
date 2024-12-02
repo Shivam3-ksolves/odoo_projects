@@ -1,0 +1,25 @@
+<odoo>
+    <!-- Define a New Category for School Management -->
+    <record id="module_category_school_management" model="ir.module.category">
+        <field name="name">School Management</field>
+        <field name="sequence" eval="1"/>
+    </record>
+
+    <!-- Admin Group -->
+    <record id="group_school_admin" model="res.groups">
+        <field name="name">School Admin</field>
+        <field name="category_id" ref="module_category_school_management"/>
+    </record>
+
+    <!-- Teacher Group -->
+    <record id="group_school_teacher" model="res.groups">
+        <field name="name">Teacher</field>
+        <field name="category_id" ref="module_category_school_management"/>
+    </record>
+
+    <!-- Student Group -->
+    <record id="group_school_student" model="res.groups">
+        <field name="name">Student</field>
+        <field name="category_id" ref="module_category_school_management"/>
+    </record>
+</odoo>

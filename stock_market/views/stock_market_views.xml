@@ -1,0 +1,12 @@
+<odoo>
+    <!-- Action for Stock Market -->
+    <record id="action_stock_market" model="ir.actions.act_window">
+        <field name="name">Stock Market</field>
+        <field name="res_model">stock.market</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Menu for Stock Market -->
+    <menuitem id="menu_stock_market" name="Stock Market" sequence="1" action="action_stock_market"/>
+</odoo>

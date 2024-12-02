@@ -1,0 +1,12 @@
+<odoo>
+    <record id="view_class_inherit" model="ir.ui.view">
+        <field name="name">odoo_school.odoo_class.inherit</field>
+        <field name="model">odoo.class</field>
+        <field name="inherit_id" ref="odoo_school.view_class_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="teacher_id" domain="[('is_teacher', '=', True)]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

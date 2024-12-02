@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- School Form View -->
+    <record id="view_school_form" model="ir.ui.view">
+        <field name="name">school.form</field>
+        <field name="model">school.school</field>
+        <field name="arch" type="xml">
+            <form string="School">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <notebook>
+                        <page string="Students">
+                            <field name="student_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="age"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Student Tree View -->
+    <record id="view_student_tree" model="ir.ui.view">
+        <field name="name">student.tree</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <tree string="Students">
+                <field name="name"/>
+                <field name="age"/>
+                <field name="status"/>
+                <field name="school_id"/>
+                <field name="teacher_ids" widget="many2many_tags" string="Teachers"/>
+            </tree>
+        </field>
+    </record>
+
+
+     <!-- Student Form View with Many2many Teacher Field -->
+    <record id="view_student_form" model="ir.ui.view">
+        <field name="name">student.form</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <form string="Student">
+                                   <header>
+<button name="%(action_student_report)d" type="action" string="Print PDF" class="btn-primary"/>
+    <!-- Action button to graduate student -->
+    <button name="action_graduate_student" type="object" string="Graduate Student" class="btn-primary"/>
+</header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="age"/>
+                        <field name="school_id"/>
+                        <field name="status"/>
+                        <field name="graduation_date"/>
+                        <field name="final_grades"/>
+
+                    </group>
+                    <group>
+                        <field name="teacher_ids" widget="many2many_tags"/>
+                    </group>
+
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action Window for School -->
+    <record id="action_school" model="ir.actions.act_window">
+        <field name="name">Schools</field>
+        <field name="res_model">school.school</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_create">
+                Click to create a new school.
+            </p>
+        </field>
+    </record>
+
+    <!-- Action Window for Student -->
+    <record id="action_student" model="ir.actions.act_window">
+        <field name="name">Students</field>
+        <field name="res_model">school.student</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_create">
+                Click to create a new student.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="menu_school_management" name="School Management" sequence="1"/>
+    <menuitem id="menu_school" name="Schools" parent="menu_school_management" action="action_school" sequence="10"/>
+    <menuitem id="menu_student" name="Students" parent="menu_school_management" action="action_student" sequence="20"/>
+</odoo>

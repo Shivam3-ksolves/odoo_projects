@@ -1,0 +1,50 @@
+<odoo>
+    <record id="view_department_form" model="ir.ui.view">
+        <field name="name">department.form</field>
+        <field name="model">school.department</field>
+        <field name="arch" type="xml">
+            <form string="Department">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+   <!-- Teacher Form View with Many2many relation to Departments -->
+    <record id="view_teacher_form" model="ir.ui.view">
+        <field name="name">teacher.form</field>
+        <field name="model">school.teacher</field>
+        <field name="arch" type="xml">
+            <form string="Teacher">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="age"/>
+                        <field name="department_id"/>
+                    </group>
+                    <group>
+                        <!-- Many2many relation for Students -->
+                        <field name="student_ids" widget="many2many_tags" string="Students"/>
+                        <field name="student_count" readonly="1"/> <!-- Display student count -->
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_department" model="ir.actions.act_window">
+        <field name="name">Departments</field>
+        <field name="res_model">school.department</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_teacher" model="ir.actions.act_window">
+        <field name="name">Teachers</field>
+        <field name="res_model">school.teacher</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

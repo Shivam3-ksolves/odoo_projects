@@ -1,0 +1,41 @@
+<odoo>
+    <!-- List View -->
+    <record id="view_news_article_tree" model="ir.ui.view">
+        <field name="name">news.article.tree</field>
+        <field name="model">news.article</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="title"/>
+                <field name="published_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_news_article_form" model="ir.ui.view">
+        <field name="name">news.article.form</field>
+        <field name="model">news.article</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="title"/>
+                        <field name="content"/>
+                        <field name="published_date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_news_article" model="ir.actions.act_window">
+        <field name="name">News Articles</field>
+        <field name="res_model">news.article</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="menu_news" name="NewsApp" sequence="10"/>
+    <menuitem id="menu_news_articles" name="News Articles" parent="menu_news" action="action_news_article"/>
+</odoo>

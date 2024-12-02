@@ -1,0 +1,39 @@
+<odoo>
+    <template id="student_pdf_template" name="Student Report Template">
+        <t t-call="web.html_container"> <!-- Base layout for reports -->
+            <t t-foreach="docs" t-as="student">  <!-- Use docs to iterate over the records -->
+                <div class="page">
+                    <h2>Student Report</h2>
+                    <p><strong>Name:</strong> <t t-esc="student.name"/></p>
+                    <p><strong>Age:</strong> <t t-esc="student.age"/></p>
+                    <p><strong>School:</strong> <t t-esc="student.school_id.name"/></p>
+                    <p><strong>Status:</strong> <t t-esc="student.status"/></p>
+                    <p><strong>Graduation Date:</strong> <t t-esc="student.graduation_date"/></p>
+                    <p><strong>Final Grades:</strong> <t t-esc="student.final_grades"/></p>
+                    <p><strong>Teachers:</strong>
+                        <t t-foreach="student.teacher_ids" t-as="teacher">
+                            <span><t t-esc="teacher.name"/> </span>
+                        </t>
+                    </p>
+                </div>
+            </t>
+        </t>
+    </template>
+    <template id="student_pdf_template_test" name="Student PDF Report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="student">
+                <div class="page">
+                    <h1>Student Report</h1>
+                    <p><strong>Name:</strong><t t-esc="student.name"/> </p>
+                    <p><strong>Age:</strong><t t-esc="student.age"/> </p>
+                    <p><strong>School:</strong><t t-esc="student.school_id.name"/> </p>
+                    <p><strong>Teachers:</strong></p>
+                       <t t-foreach="student.teacher_ids" t-as="teacher">
+                           <span><t t-esc="teacher.name"/> </span>
+                       </t>
+                </div>
+            </t>
+        </t>
+
+    </template>
+</odoo>

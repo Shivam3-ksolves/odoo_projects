@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+        <!-- Sample Stock Market Record -->
+        <record id="stock_market_1" model="stock.market">
+            <field name="name">Tesla</field>
+            <field name="stock_symbol">TSLA</field>
+            <field name="stock_price">2500.50</field>
+            <field name="market_cap">800000000000</field>
+            <field name="volume">50000000</field>
+            <field name="listed_on">2022-01-01</field>
+        </record>
+
+        <!-- Sample Stock Trade Record -->
+        <record id="stock_trade_1" model="stock.trade">
+            <field name="stock_id" ref="stock_market_1"/>
+            <field name="trade_type">buy</field>
+            <field name="trade_price">2500.50</field>
+            <field name="trade_volume">100</field>
+            <field name="trade_date">2023-11-19 10:00:00</field>
+        </record>
+    </data>
+</odoo>

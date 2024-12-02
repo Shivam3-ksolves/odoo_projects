@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="menu_school_management" name="School Management" sequence="1" groups="group_school_admin,group_school_teacher,group_school_student"/>
+
+    <!-- Schools: Accessible to Admins and Teachers -->
+    <menuitem id="menu_school" name="Schools" parent="menu_school_management" action="action_school" sequence="10" groups="group_school_admin,group_school_teacher,group_school_student"/>
+
+    <!-- Students: Accessible to Admins, Teachers, and Students -->
+    <menuitem id="menu_student" name="Students" parent="menu_school_management" action="action_student" sequence="20" groups="group_school_admin,group_school_teacher,group_school_student"/>
+
+    <!-- Departments: Accessible only to Admins -->
+    <menuitem id="menu_department" name="Departments" parent="menu_school_management" action="action_department" sequence="30" groups="group_school_admin"/>
+
+    <!-- Teachers: Accessible to Admins and Teachers -->
+    <menuitem id="menu_teacher" name="Teachers" parent="menu_school_management" action="action_teacher" sequence="40" groups="group_school_admin,group_school_teacher"/>
+</odoo>

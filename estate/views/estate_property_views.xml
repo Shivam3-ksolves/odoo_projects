@@ -1,0 +1,47 @@
+<odoo>
+    <!-- Define the Action for Estate Properties -->
+    <record id="action_estate_property" model="ir.actions.act_window">
+        <field name="name">Estate Properties</field>
+        <field name="res_model">estate.property</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Define the Menu Item for Estate Properties -->
+    <menuitem id="estate_property_menu"
+              name="Estate Properties"
+              parent="estate_property_root_menu"
+              action="action_estate_property"
+              sequence="10"/>
+
+    <!-- Define the Views for Estate Properties -->
+    <record id="view_estate_property_tree" model="ir.ui.view">
+        <field name="name">estate.property.tree</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="price"/>
+                <field name="bedrooms"/>
+                <field name="living_area"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_estate_property_form" model="ir.ui.view">
+        <field name="name">estate.property.form</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="price"/>
+                        <field name="bedrooms"/>
+                        <field name="living_area"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

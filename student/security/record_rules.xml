@@ -1,0 +1,39 @@
+<odoo>
+    <!-- Record Rule for Admins to access everything -->
+    <record id="school_admin_access" model="ir.rule">
+        <field name="name">Admin Access to All School Records</field>
+        <field name="model_id" ref="model_school_school"/>
+        <field name="groups" eval="[(4, ref('group_school_admin'))]"/>
+        <field name="domain_force">[]</field>  <!-- No restriction, full access -->
+    </record>
+
+    <!-- Record Rule for Teachers: Allow Teachers to Access Their Own Department -->
+    <record id="teacher_access" model="ir.rule">
+        <field name="name">Teacher Access</field>
+        <field name="model_id" ref="model_school_teacher"/>
+        <field name="groups" eval="[(4, ref('group_school_teacher'))]"/>
+        <field name="domain_force">[]</field>  <!-- Limit teachers to their department -->
+    </record>
+
+    <!-- Record Rule for Students: Students can only see their own records and related teachers -->
+    <record id="student_access" model="ir.rule">
+        <field name="name">Student Access</field>
+        <field name="model_id" ref="model_school_student"/>
+        <field name="groups" eval="[(4, ref('group_school_student'))]"/>
+        <field name="domain_force">[('id', '=', user.id)]</field>  <!-- Only own student record -->
+    </record>
+    <record id="student_access_school" model="ir.rule">
+        <field name="name">Student Access School</field>
+        <field name="model_id" ref="model_school_school"/>
+        <field name="groups" eval="[(4, ref('group_school_student'))]"/>
+        <field name="domain_force">[]</field>  <!-- Only own student record -->
+    </record>
+    <!-- Optional: Record Rule for Students to see associated Teachers -->
+    <record id="student_teacher_access" model="ir.rule">
+        <field name="name">Student Teacher Access</field>
+        <field name="model_id" ref="model_school_teacher"/>
+        <field name="groups" eval="[(4, ref('group_school_student'))]"/>
+        <field name="domain_force">[('student_ids', 'in', [user.id])] </field>  <!-- Show teachers related to student -->
+    </record>
+
+</odoo>

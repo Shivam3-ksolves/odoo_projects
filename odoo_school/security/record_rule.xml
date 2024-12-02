@@ -1,0 +1,33 @@
+<odoo>
+    <!-- Record rule for Students -->
+    <record id="student_own_records_rule" model="ir.rule">
+        <field name="name">Student Own Records</field>
+        <field name="model_id" ref="model_odoo_student"/>
+        <field name="domain_force">[('create_uid', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <!-- Record rule for Classes -->
+    <record id="class_own_records_rule" model="ir.rule">
+        <field name="name">Class Own Records</field>
+        <field name="model_id" ref="model_odoo_class"/>
+        <field name="domain_force">[('create_uid', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <!-- Record rule for Subjects -->
+    <record id="subject_own_records_rule" model="ir.rule">
+        <field name="name">Subject Own Records</field>
+        <field name="model_id" ref="model_odoo_subject"/>
+        <field name="domain_force">[('create_uid', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <!-- Record rule for Fees -->
+    <record id="fee_own_records_rule" model="ir.rule">
+        <field name="name">Fee Own Records</field>
+        <field name="model_id" ref="model_odoo_fee"/>
+        <field name="domain_force">[('create_uid', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+</odoo>
