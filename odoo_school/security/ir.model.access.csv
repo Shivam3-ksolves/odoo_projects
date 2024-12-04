@@ -3,3 +3,5 @@ access_odoo_student,access_odoo_student,model_odoo_student,base.group_user,1,1,1
 access_odoo_class,access_odoo_class,model_odoo_class,base.group_user,1,1,1,1
 access_odoo_subject,access_odoo_subject,model_odoo_subject,base.group_user,1,1,1,1
 access_odoo_fee,access_odoo_fee,model_odoo_fee,base.group_user,1,1,1,1
+access_odoo_exams,access_odoo_exams,model_odoo_exams,base.group_user,1,1,1,1
+access_create_exam_wizard,access_create_exam_wizard,model_create_exam_wizard,base.group_user,1,1,1,1

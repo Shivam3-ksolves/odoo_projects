@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_exam_tree" model="ir.ui.view">
+        <field name="name">odoo.exams.tree</field>
+        <field name="model">odoo.exams</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="student_id"/>
+                <field name="subject_id"/>
+                <field name="marks_obtained"/>
+                <field name="total_marks"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_exam_form" model="ir.ui.view">
+        <field name="name">odoo.exams.form</field>
+        <field name="model">odoo.exams</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                <field name="name"/>
+                <field name="student_id"/>
+                <field name="subject_id"/>
+                <field name="marks_obtained"/>
+                <field name="total_marks"/>
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="action_exam" model="ir.actions.act_window">
+    <field name="name">Exams</field>
+    <field name="res_model">odoo.exams</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+
+</odoo>

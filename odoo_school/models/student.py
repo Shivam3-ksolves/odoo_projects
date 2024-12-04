@@ -12,3 +12,4 @@ class Student (models.Model):
     class_id= fields.Many2one('odoo.class',string='Class')
     fee_ids= fields.One2many('odoo.fee','student_id')
     subject_ids=fields.Many2many('odoo.subject',string='Subjects')
+    exam_ids=fields.One2many('odoo.exams','student_id',string='Exams')

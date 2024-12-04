@@ -10,7 +10,6 @@
          <field name="name"/>
          <field name="is_teacher"/>
          <field name="teacher_id"/>
-
        </tree>
      </field>
    </record>
@@ -56,9 +55,4 @@
         <field name="domain">[('is_teacher', '=', True)]</field>
   </record>
 
-  <!-- Menu Item -->
-  <menuitem id="main_menu"
-              name="Teacher"
-              action="action_teacher_view"
-    />
 </odoo>

@@ -6,3 +6,4 @@ class Subject(models.Model):
 
     name=fields.Char(string ='Subject Name')
     student_ids=fields.Many2many('odoo.student',string='Students')
+    exam_ids=fields.One2many('odoo.exams','subject_id',string='Exams')

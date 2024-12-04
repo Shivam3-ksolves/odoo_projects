@@ -11,6 +11,10 @@
                         <field name="month"/>
                         <field name="student_id"/>
                     </group>
+                     <header>
+                        <!-- Button to trigger CSV download -->
+                        <button name="generate_csv" type="object" string="Download CSV" class="btn-primary"/>
+                    </header>
                 </sheet>
             </form>
         </field>
@@ -29,9 +33,65 @@
         </field>
     </record>
 
+    <!-- Pivot View -->
+    <record id="view_fee_pivot" model="ir.ui.view">
+        <field name="name">odoo.fee.pivot</field>
+        <field name="model">odoo.fee</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="amount" type="measure"/>
+                <field name="month" type="row"/>
+                <field name="student_id" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Graph View (Chart) -->
+    <record id="view_fee_graph" model="ir.ui.view">
+        <field name="name">odoo.fee.graph</field>
+        <field name="model">odoo.fee</field>
+        <field name="arch" type="xml">
+            <graph string="Fee Analysis" type="bar">
+                <field name="amount" type="measure"/>
+                <field name="month" type="row"/>
+                <field name="student_id" type="col"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record id="view_fee_kanban" model="ir.ui.view">
+        <field name="name">odoo.fee.kanban</field>
+        <field name="model">odoo.fee</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="amount"/>
+                <field name="month"/>
+                <field name="student_id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record">
+                            <div class="o_kanban_title">
+                                <field name="name"/>
+                            </div>
+                            <div class="o_kanban_tags">
+                                <field name="amount"/>
+                            </div>
+                            <div class="o_kanban_description">
+                                <field name="student_id"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Action -->
     <record id="action_fee" model="ir.actions.act_window">
         <field name="name">Fees</field>
         <field name="res_model">odoo.fee</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,pivot,graph,kanban</field>
     </record>
 </odoo>

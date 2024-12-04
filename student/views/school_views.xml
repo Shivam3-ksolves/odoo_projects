@@ -50,6 +50,8 @@
                                    <header>
 <button name="%(action_student_report)d" type="action" string="Print PDF" class="btn-primary"/>
     <!-- Action button to graduate student -->
+                                                               <button name="%(student.action_student_report)d" type="action" string="Download CSV" class="btn-primary"/>
+
     <button name="action_graduate_student" type="object" string="Graduate Student" class="btn-primary"/>
 </header>
                 <sheet>

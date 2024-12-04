@@ -36,4 +36,23 @@
         </t>
 
     </template>
+
+<template id="student.student_csv_template">
+    <!-- Define a flag for header printing -->
+    <t t-set="is_first_row" t-value="True"/>
+
+    <t t-foreach="docs" t-as="doc">
+        <t t-if="is_first_row">
+            <!-- This writes the header in the first row -->
+            <t t-raw="'Name, Age, Grade'"/> <!-- CSV header -->
+            <t t-set="is_first_row" t-value="False"/> <!-- Set the flag to False after the first row -->
+        </t>
+
+        <!-- Set and output CSV row for each student -->
+        <t t-set="csv_row" t-value="str(doc.name) + ',' + str(doc.age) + ',' + str(doc.final_grades)"/>
+        <t t-raw="csv_row"/> <!-- Output CSV data for each student -->
+    </t>
+</template>
+
+
 </odoo>

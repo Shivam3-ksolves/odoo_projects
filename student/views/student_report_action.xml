@@ -1,18 +1,19 @@
 <odoo>
 <record id="action_student_report" model="ir.actions.report">
-    <field name="name">Print Student PDF</field>
+    <field name="name">Print Student CSV</field>
     <field name="model">school.student</field>
-    <field name="report_name">student.student_pdf_template</field>
-    <field name="report_type">qweb-pdf</field>
-    <field name="report_file">student.student_pdf_template</field>
-    <field name="print_report_name">'Student_Report_' + object.name</field>
+    <field name="report_name">student.student_csv_template</field>  <!-- Name of the QWeb template for CSV -->
+    <field name="report_type">qweb-text</field>  <!-- Specifies it's a text-based report (CSV) -->
+    <field name="report_file">student.student_csv_template</field>  <!-- CSV file name -->
+    <field name="print_report_name">'Student_Report_' + object.name + '.csv'</field>  <!-- Dynamically sets the file name -->
 </record>
+
 <record id="action_student_report_gen" model="ir.actions.report">
     <field name="name">Print Student PDF</field>
     <field name="model">school.student</field>
     <field name="report_name">student.student_pdf_template</field>
     <field name="report_type">qweb-pdf</field>
     <field name="report_file">student.student_pdf_template</field>
-    <field name="print_report_name">'Student_Report_' + object.name</field>
+    <field name="print_report_name">''Student_Report_' + object.name'</field>
 </record>
 </odoo>

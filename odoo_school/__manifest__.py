@@ -28,6 +28,8 @@ Long description of module's purpose
         'views/class_views.xml',
         'views/subject_views.xml',
         'views/fee_views.xml',
+        'views/exams_views.xml',
+        'views/exam_wizard.xml',
         'views/menus.xml',
 
     ],

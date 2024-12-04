@@ -102,3 +102,7 @@ class Student(models.Model):
         # Example logic for final grades; modify it as per your requirement
         return "A"  # For simplicity, assume all graduated students get an "A"
 
+    def generate_csv_report(self):
+        return self.env.ref('student.action_student_report').report_action(self)
+
+
