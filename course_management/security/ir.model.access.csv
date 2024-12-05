@@ -4,3 +4,4 @@ access_course_management,access_course_management,model_course_management,,1,1,1
 access_quotation_order_lines_wizard,access_quotation_order_lines_wizard,model_quotation_order_lines_wizard,,1,1,1,1
 access_quotation_order_lines_temp_user,access.quotation.order.lines.temp.user,model_quotation_order_lines_temp,base.group_user,1,1,1,1
 access_quotation_order_lines_temp_manager,access.quotation.order.lines.temp.manager,model_quotation_order_lines_temp,base.group_system,1,1,1,1
+access_sale_order_merge_user,access_sale_order_merge_user,model_sale_order,base.group_user,1,1,1,1

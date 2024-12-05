@@ -9,6 +9,7 @@
         'security/security_rules.xml',
         'views/student_views.xml',
         'views/course_views.xml',
+        'data/ir_access_data.xml',
         # 'views/qoutation_wizard.xml'
     ],
     'installable': True,

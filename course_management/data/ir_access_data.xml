@@ -1,0 +1,12 @@
+    <odoo>
+        <!-- Server Action to Merge Sale Orders -->
+        <record id="action_merge_sale_orders" model="ir.actions.server">
+            <field name="name">Merge Sale Orders</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="state">code</field>
+            <field name="code">
+                action = env['sale.order'].action_merge_orders(env.context.get('active_ids'))
+            </field>
+        </record>
+    </odoo>
