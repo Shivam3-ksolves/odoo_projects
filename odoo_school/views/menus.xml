@@ -7,4 +7,5 @@
     <menuitem id="menu_exam" name="Exams" parent="menu_school_root" action="action_exam" sequence="50" />
     <menuitem id="menu_exam_result" name="View Results" parent="menu_exam" sequence="1" action="action_exam"/>
     <menuitem id="menu_exam_wizard" name="Create Exams" parent="menu_exam" sequence="2" action="action_create_exam_wizard"/>
+<menuitem id="menu_exam_report" name="Generate Exam Report" parent="menu_exam" sequence="3" action="action_exam_report_wizard"/>
 </odoo>

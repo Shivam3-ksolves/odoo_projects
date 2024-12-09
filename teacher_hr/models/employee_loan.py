@@ -52,6 +52,7 @@ class EmployeeLoan(models.Model):
                 'serial_number': i,
                 'emi_amount': self.emi_amount,
                 'emi_date': emi_date,
+                'employee_name':self.display_name
             })
             emi_date += timedelta(days=30)
 
@@ -138,3 +139,11 @@ class EmployeeLoanLine(models.Model):
     serial_number = fields.Integer(string='Serial Number', required=True)
     emi_amount = fields.Float(string='EMI Amount', required=True)
     emi_date = fields.Date(string='EMI Date', required=True)
+    paid = fields.Boolean(string='Paid', default=False)
+    employee_name=fields.Char(string='Employee Name')
+    # wizard_id = fields.Many2one(
+    #     comodel_name='emi.wizard',
+    #     string="Wizard",
+    #     ondelete='cascade',
+    # )
+

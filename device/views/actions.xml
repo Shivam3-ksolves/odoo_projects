@@ -1,0 +1,47 @@
+<odoo>
+    <record id="action_device_type" model="ir.actions.act_window">
+        <field name="name">Device Types</field>
+        <field name="res_model">device.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+
+    <record id="action_device_brand" model="ir.actions.act_window">
+        <field name="name">Device Brand</field>
+        <field name="res_model">device.brand</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_device_model" model="ir.actions.act_window">
+        <field name="name">Device Models</field>
+        <field name="res_model">device.model</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+
+    <record id="action_device" model="ir.actions.act_window">
+        <field name="name">Devices</field>
+        <field name="res_model">device.device</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+
+    <record id="action_device_assignment" model="ir.actions.act_window">
+        <field name="name">Device Assignments</field>
+        <field name="res_model">device.assignment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+
+    <record id="action_device_attribute_assignment" model="ir.actions.act_window">
+        <field name="name">Device Attribute Assignments</field>
+        <field name="res_model">device.attribute.assignment</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+</odoo>

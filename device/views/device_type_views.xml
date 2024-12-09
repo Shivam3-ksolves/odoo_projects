@@ -1,0 +1,29 @@
+<odoo>
+    <record id="view_device_type_tree" model="ir.ui.view">
+        <field name="name">view.device.type.tree</field>
+        <field name="model">device.type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="sequence"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_device_type_form" model="ir.ui.view">
+        <field name="name">view.device.type.form</field>
+        <field name="model">device.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                         <field name="name"/>
+                         <field name="code"/>
+                         <field name="sequence"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

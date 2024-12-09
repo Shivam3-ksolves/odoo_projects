@@ -1,0 +1,12 @@
+<odoo>
+
+<record id="exam_report_pdf" model="ir.actions.report">
+    <field name="name">Print Exam Report</field>
+    <field name="model">exam.report.wizard</field>
+    <field name="report_name">odoo_school.exam_report_template</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_file">odoo_school.exam_report_template</field>
+    <field name="print_report_name">'Student_Report_' + object.student_id.name</field>
+</record>
+
+</odoo>

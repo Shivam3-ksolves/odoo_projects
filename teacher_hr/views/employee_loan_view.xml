@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- Tree View -->
+ <!-- Tree View for Employee Loan -->
     <record id="view_employee_loan_tree" model="ir.ui.view">
         <field name="name">employee.loan.tree</field>
         <field name="model">employee.loan</field>
@@ -12,6 +12,53 @@
             </tree>
         </field>
     </record>
+
+    <!-- Action for the EMI Filter Wizard -->
+    <record id="emi_wizard_action" model="ir.actions.act_window">
+        <field name="name">Filter EMI</field>
+        <field name="res_model">emi.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+<record id="action_employee_loan_with_wizard" model="ir.actions.server">
+    <field name="name">Filter EMIs</field>
+    <field name="model_id" ref="model_employee_loan"/>
+    <field name="binding_model_id" ref="model_employee_loan"/>
+    <field name="binding_view_types">tree</field> <!-- Ensures it appears only in the tree view -->
+    <field name="state">code</field>
+    <field name="code">
+        action = env['ir.actions.act_window']._for_xml_id('teacher_hr.emi_wizard_action')
+    </field>
+</record>
+
+<record id="view_emi_wizard_form" model="ir.ui.view">
+    <field name="name">emi.wizard.form</field>
+    <field name="model">emi.wizard</field>
+    <field name="arch" type="xml">
+        <form string="Filter EMI">
+            <group>
+                <field name="month" onchange="onchange_month()"/>
+            </group>
+            <group>
+                <field name="loan_line_ids">
+                    <tree>
+                        <!-- Make all fields except 'paid' read-only -->
+                        <field name="serial_number" readonly="1"/>
+                        <field name="employee_name" readonly="1"/>
+                        <field name="emi_amount" readonly="1"/>
+                        <field name="emi_date" readonly="1"/>
+                        <field name="paid" attrs="{'readonly': False}"/>  <!-- Make 'paid' editable -->
+                    </tree>
+                </field>
+            </group>
+            <footer>
+                <button string="Cancel" type="object" class="btn-secondary" special="cancel"/>
+            </footer>
+        </form>
+    </field>
+</record>
+
 
     <record id="view_employee_loan_form" model="ir.ui.view">
         <field name="name">employee.loan.form</field>
@@ -53,6 +100,8 @@
                                     <field name="serial_number"/>
                                     <field name="emi_date"/>
                                     <field name="emi_amount"/>
+                                   <field name="paid"/>
+
                                 </tree>
                             </field>
                         </page>
@@ -70,21 +119,31 @@
     </record>
 
 
-<!--     <record id="view_employee_loan_line_tree" model="ir.ui.view">-->
-<!--        <field name="name">employee.loan.line.tree</field>-->
-<!--        <field name="model">employee.loan.line</field>-->
-<!--        <field name="arch" type="xml">-->
-<!--            <tree>-->
-<!--                <field name="serial_number"/>-->
-<!--                <field name="emi_amount"/>-->
-<!--                <field name="emi_date"/>-->
-<!--            </tree>-->
-<!--        </field>-->
-<!--    </record>-->
+     <record id="view_employee_loan_line_tree" model="ir.ui.view">
+        <field name="name">employee.loan.line.tree</field>
+        <field name="model">employee.loan.line</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="paid"/>
+                <field name="serial_number"/>
+                <field name="employee_name"/>
+                <field name="emi_amount"/>
+                <field name="emi_date"/>
+
+<!--                <field name="employee_id"/>-->
+
+            </tree>
+        </field>
+    </record>
     <!-- Action -->
+
+
     <record id="action_employee_loan" model="ir.actions.act_window">
         <field name="name">Employee Loan</field>
         <field name="res_model">employee.loan</field>
         <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+
     </record>
+
 </odoo>
