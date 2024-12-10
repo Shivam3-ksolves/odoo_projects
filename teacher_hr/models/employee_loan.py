@@ -141,9 +141,9 @@ class EmployeeLoanLine(models.Model):
     emi_date = fields.Date(string='EMI Date', required=True)
     paid = fields.Boolean(string='Paid', default=False)
     employee_name=fields.Char(string='Employee Name')
-    # wizard_id = fields.Many2one(
-    #     comodel_name='emi.wizard',
-    #     string="Wizard",
-    #     ondelete='cascade',
-    # )
+    emi_wizard_id = fields.Many2one(
+        'emi.wizard',
+        string='EMI Wizard'
+    )
+
 

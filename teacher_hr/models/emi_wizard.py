@@ -1,7 +1,7 @@
 from odoo import fields,models,api
 from datetime import datetime, timedelta
 
-class EMIWizard(models.TransientModel):
+class EMIWizard(models.Model):
     _name = 'emi.wizard'
     _description = 'EMI Filter Wizard'
 
@@ -12,7 +12,7 @@ class EMIWizard(models.TransientModel):
     )
     loan_line_ids = fields.One2many(
         comodel_name='employee.loan.line',
-        inverse_name='id',
+        inverse_name='emi_wizard_id',
         string="Loan Lines",
     )
 

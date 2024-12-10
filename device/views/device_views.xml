@@ -21,6 +21,7 @@
                     <group>
                         <field name="name"/>
                         <field name="device_type_id"/>
+                        <field name="device_model_id"/>
                         <field name="device_brand_id"/>
                         <field name="shared"/>
                         <field name="attributes"/>

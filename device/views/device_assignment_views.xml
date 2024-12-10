@@ -18,6 +18,19 @@
         <field name="model">device.assignment</field>
         <field name="arch" type="xml">
             <form>
+                 <header>
+                    <!-- Statusbar for State Field -->
+                    <field name="state" widget="statusbar" statusbar_visible="new,draft,approved,returned,rejected"/>
+
+            <button name="action_set_approved" type="object" string="Approved" class="oe_stat_button"
+                            invisible="state == 'approved'"/>
+                    <button name="action_set_returned" type="object" string="Returned" class="oe_stat_button"
+                            invisible="state == 'returned'"/>
+                    <button name="action_set_rejected" type="object" string="Rejected" class="oe_stat_button"
+                            invisible="state == 'rejected'"/>
+                </header>
+
+
                 <sheet>
                     <group>
                         <group>
@@ -29,7 +42,7 @@
                         <group>
                             <field name="date_start"/>
                             <field name="date_expire"/>
-                             <field name="state"/>
+<!--                             <field name="state"/>-->
                         </group>
 
                     </group>

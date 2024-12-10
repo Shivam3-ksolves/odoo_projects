@@ -10,3 +10,6 @@ class Device(models.Model):
     device_brand_id = fields.Many2one('device.brand', string="Device Brand")
     device_model_id = fields.Many2one('device.model', string="Device Model")
     attributes = fields.One2many('device.attribute.assignment', 'device_id', string="Attributes")
+    _sql_constraints = [
+        ('unique_device_name', 'unique(name)', 'The device name must be unique!')
+    ]
