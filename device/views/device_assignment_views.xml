@@ -20,7 +20,7 @@
             <form>
                  <header>
                     <!-- Statusbar for State Field -->
-                    <field name="state" widget="statusbar" statusbar_visible="new,draft,approved,returned,rejected"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,approved,returned,rejected"/>
 
             <button name="action_set_approved" type="object" string="Approved" class="oe_stat_button"
                             invisible="state == 'approved'"/>

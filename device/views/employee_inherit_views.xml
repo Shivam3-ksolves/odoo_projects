@@ -5,11 +5,11 @@
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//group[1]" position="after">
-                <group>
-                    <field name="device_ids"/>
-                </group>
-            </xpath>
+            <notebook position="inside">
+                <page string="Devices">
+                     <field name="device_assignment_ids"/>
+                </page>
+            </notebook>
         </field>
     </record>
 </odoo>

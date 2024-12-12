@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from odoo import models, fields, api
 
 class QuotationOrderLinesWizard(models.TransientModel):
@@ -9,9 +11,7 @@ class QuotationOrderLinesWizard(models.TransientModel):
 
     @api.onchange('quotation_id')
     def _onchange_quotation_id(self):
-        """
-        Fetch order lines from the selected quotation and populate the wizard.
-        """
+
         # view_id = self.env.ref('your_module.view_quotation_order_lines_wizard_form').id
 
         if self.quotation_id:
@@ -33,9 +33,7 @@ class QuotationOrderLinesWizard(models.TransientModel):
 
 
     def action_confirm(self):
-        """
-        Confirm and save the changes made in the wizard back to the sale order.
-        """
+
         for line in self.quotation_id.order_line:
             # Update the corresponding sale order lines
             order_line = self.env['sale.order.line'].browse(line.id)

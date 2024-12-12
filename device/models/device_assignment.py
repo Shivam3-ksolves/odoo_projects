@@ -32,8 +32,8 @@ class DeviceAssignment(models.Model):
             values['state'] = 'draft'
         return super(DeviceAssignment, self).write(values)
 
-    def action_set_new(self):
-        self.write({'state': 'new'})
+    # def action_set_new(self):
+    #     self.write({'state': 'new'})
 
     def action_set_draft(self):
         self.write({'state': 'draft'})
