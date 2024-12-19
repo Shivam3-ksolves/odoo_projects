@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields,api
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
@@ -18,4 +18,10 @@ class SaleOrder(models.Model):
                 'active_id': self.id,
                 'default_sale_order_id': self.id,
             },
+        }
+
+    def action_show_success_modal(self):
+        return {
+            'type': 'ir.actions.client',
+            'tag': 'show_success_message',  # This will call the JS action
         }

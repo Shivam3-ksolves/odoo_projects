@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_report_mobile_sale_order" model="ir.actions.report">
+        <field name="name">Mobile Sale Order</field>
+        <field name="model">mobile.sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mobile_soft.report_mobile_saleorder_document</field>
+        <field name="report_file">mobile_soft.report_mobile_saleorder_document</field>
+        <field name="binding_model_id" ref="model_mobile_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

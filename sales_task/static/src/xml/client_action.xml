@@ -1,0 +1,17 @@
+<odoo>
+    <templates id="template" xml:space="preserve">
+        <!-- Custom Modal Template -->
+        <t t-name="sales_task.success_message_modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Confirmation</h3>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to perform this action?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" t-on-click="close">Cancel</button>
+                <button type="button" class="btn btn-primary" t-on-click="confirm">Confirm</button>
+            </div>
+        </t>
+    </templates>
+</odoo>

@@ -1,0 +1,120 @@
+<odoo>
+    <template id="report_mobile_saleorder_document">
+        <t t-call="web.html_container">
+        <t t-call="web.internal_layout">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="order" t-value="doc"/>
+                <div class="page">
+                    <div class="oe_structure"/>
+
+                    <h2 class="mt-4">
+                        <t t-if="order and order.state == 'draft'">Quotation #</t>
+                        <t t-if="order and order.state == 'confirmed'">Mobile Order #</t>
+                        <span t-if="order" t-field="order.name"/>
+                    </h2>
+
+                    <!-- Customer and Order Information -->
+                    <div class="row mt-4 mb-2" id="informations">
+                        <div t-if="order.customer_id" class="col-3">
+                            <strong>Customer:</strong>
+                            <br/>
+                            <span t-field="order.customer_id.name"/>
+                        </div>
+                        <div t-if="order.date" class="col-auto col-3 mw-100 mb-2">
+                            <strong>Order Date:</strong>
+                            <br/>
+                            <span t-field="order.date" t-options='{"widget": "date"}'/>
+                        </div>
+                        <div t-if="order.user_id" class="col-auto col-3 mw-100 mb-2">
+                            <strong>Salesperson:</strong>
+                            <br/>
+                            <span t-field="order.user_id.name"/>
+                        </div>
+                    </div>
+
+                    <!-- Order Lines Table -->
+                    <table class="table table-sm table-borderless mt-4" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th class="text-start">Quantity</th>
+                                <th class="text-start">Unit Price</th>
+                                <th class="text-start">Taxes</th>
+                                <th class="text-start">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="order.order_line_ids">
+                                <t t-foreach="order.order_line_ids" t-as="line">
+                                    <tr>
+                                        <td>
+                                            <span t-field="line.product_id.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.quantity"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.price_unit"
+                                                  t-options="{'widget': 'monetary', 'display_currency': order.currency_id}"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.tax_amount"
+                                                  t-options="{'widget': 'monetary', 'display_currency': order.currency_id}"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.subtotal"
+                                                  t-options="{'widget': 'monetary', 'display_currency': order.currency_id}"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!-- Totals Section -->
+                    <div class="clearfix mt-4">
+                        <div class="row">
+                            <div class="col-6 ms-auto">
+                                <table class="table table-sm table-borderless"
+                                       style="border-top: 1px solid black; border-collapse: collapse; width: 50%; margin-top: 20px; margin-left: 40%;">
+                                    <tr>
+                                        <td style="padding: 5px;">
+                                            <strong>Untaxed Amount:</strong>
+                                        </td>
+                                        <td style="padding: 5px;">
+                                            <span t-field="order.untaxed_amount"
+                                                  t-options="{'widget': 'monetary', 'display_currency': order.currency_id}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 5px;">
+                                            <strong>Taxes:</strong>
+                                        </td>
+                                        <td style="padding: 5px;">
+                                            <span t-field="order.tax_amount"
+                                                  t-options="{'widget': 'monetary', 'display_currency': order.currency_id}"/>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-top: 1px solid black;">
+                                        <td style="padding: 5px; border-top: 1px solid black;">
+                                            <strong>Total Amount:</strong>
+                                        </td>
+                                        <td style="padding: 5px; border-top: 1px solid black;">
+                                            <span t-field="order.total_amount"
+                                                  t-options="{'widget': 'monetary', 'display_currency': order.currency_id}"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </t>
+        </t>
+        </t>
+    </template>
+
+
+</odoo>

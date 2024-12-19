@@ -20,23 +20,31 @@ class CustomSaleOrderLineWizard(models.TransientModel):
                     'price_unit': line.price_unit,
                     'discount': line.discount,
                 })
+
             self.update({'order_line_ids': [(5, 0, 0)] + [(0, 0, vals) for vals in lines]})
 
     def action_save(self):
+
+        existing_lines = self.env['custom.sale.order.line'].search([
+            ('sale_order_id', '=', self.sale_order_id.id),
+        ])
+
         for line in self.order_line_ids:
-            existing_line = self.env['custom.sale.order.line'].search([
-                ('sale_order_id', '=', self.sale_order_id.id),
-                ('product_id', '=', line.product_id.id),
-            ], limit=1)
+
+            existing_line = existing_lines.filtered(lambda l: l.product_id == line.product_id)
 
             if existing_line:
+
                 existing_line.write({
                     'name': line.name,
                     'quantity': line.quantity,
                     'price_unit': line.price_unit,
                     'discount': line.discount,
                 })
+
+                existing_lines -= existing_line
             else:
+
                 self.env['custom.sale.order.line'].create({
                     'sale_order_id': self.sale_order_id.id,
                     'product_id': line.product_id.id,
@@ -45,6 +53,8 @@ class CustomSaleOrderLineWizard(models.TransientModel):
                     'price_unit': line.price_unit,
                     'discount': line.discount,
                 })
+
+        existing_lines.unlink()
 
         return {'type': 'ir.actions.act_window_close'}
 
